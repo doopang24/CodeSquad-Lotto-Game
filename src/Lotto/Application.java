@@ -1,12 +1,11 @@
 package Lotto;
 
-import java.util.Arrays;
-
 public class Application {
     public static void main(String[] args) {
-        PurchaseLottoTicket purchase = new PurchaseLottoTicket();
+        LottoGenerator generator = new LottoGenerator();
 
-        int[] playerLottoTicket = purchase.getLottoTicket();
-        System.out.println(Arrays.toString(playerLottoTicket));
+        int[] playerLottoTicket = generator.getLottoTicket();
+
+        int[] winningNumbers = generator.getWinningNumbers();
     }
 }
