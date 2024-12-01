@@ -8,10 +8,13 @@ public class Application {
 
         int[] winningNumbers = generator.getWinningNumbers();
         int[] playerLottoTicket = generator.getLottoTicket();
-        int countMatch = checker.countMatching(playerLottoTicket, winningNumbers);
+        int bonusNumber = generator.getBonusNumber(winningNumbers);
 
-        printer.printWinningNumbers(winningNumbers);
+        int countMatch = checker.countMatching(playerLottoTicket, winningNumbers);
+        boolean hasBonus = checker.checkHasBonus(playerLottoTicket, bonusNumber);
+
+        printer.printWinningNumbers(winningNumbers, bonusNumber);
         printer.printPlayerLotto(playerLottoTicket);
-        printer.printLotteryResult(countMatch);
+        printer.printLotteryResult(countMatch, hasBonus);
     }
 }
