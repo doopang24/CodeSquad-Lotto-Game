@@ -10,7 +10,7 @@ public class LottoGenerator {
     private static final ThreadLocalRandom random = ThreadLocalRandom.current();
 
     public int[] getLottoTicket() {
-        System.out.println("1~45 중 로또 번호를 여섯개 입력하세요.");
+        System.out.println("플레이어는 로또 번호 여섯개를 입력하세요.");
         int[] lottoTicket = new int[6];
         for (int i = 0; i < lottoTicket.length; i++) {
             int lottoNumber = validateLottoNumbers(lottoTicket);
