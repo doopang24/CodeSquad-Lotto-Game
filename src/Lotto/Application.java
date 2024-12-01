@@ -9,22 +9,21 @@ public class Application {
         Application application = new Application();
 
         int roundOfGame = 0;
-        application.start(budget, roundOfGame);
+        application.playGame(budget, roundOfGame);
     }
 
-    private void start(Budget budget, int roundOfGame) {
-        while (budget.getBudget()!=0) {
+    private void playGame(Budget budget, int roundOfGame) {
+        while (budget.getBudget() != 0) {
 
             final int PRICE_OF_TICKET = 1000;
-
-            LottoGenerator generator = new LottoGenerator();
-            LottoWinnerChecker checker = new LottoWinnerChecker();
-            ResultPrinter printer = new ResultPrinter();
-
             System.out.println("플레이어 재산: " + budget.getFormattedBudget());
             roundOfGame++;
             System.out.println(roundOfGame + "회차 게임(-1000원)");
             budget.deductBudget(PRICE_OF_TICKET);
+
+            LottoGenerator generator = new LottoGenerator();
+            LottoWinnerChecker checker = new LottoWinnerChecker();
+            ResultPrinter printer = new ResultPrinter();
 
             int[] winningNumbers = generator.getWinningNumbers();
             int[] playerLottoTicket = generator.getLottoTicket();
@@ -45,5 +44,6 @@ public class Application {
             System.out.println("플레이어 재산: " + budget.getFormattedBudget());
             System.out.println();
         }
+        System.out.println("예산을 모두 소진하여 게임을 종료합니다.");
     }
 }
