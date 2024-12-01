@@ -28,7 +28,7 @@ public class LottoGenerator {
                 if (isDuplicated(inputNumber, lottoTicket)) {
                     System.out.println("같은 번호 " + inputNumber + "이 이미 선택되었습니다. 다른 번호를 선택하세요.");
                     continue;
-                } else if(inputNumber < 1 || inputNumber > 45) {
+                } else if (inputNumber < 1 || inputNumber > 45) {
                     System.out.println("1부터 45 사이의 숫자를 입력해주세요.");
                     continue;
                 }
@@ -52,10 +52,19 @@ public class LottoGenerator {
     private int validateWinningNumber(int[] winningNumbers) {
         while (true) {
             int winningNumber = random.nextInt(RANDOM_BOUND) + 1;
-            if(isDuplicated(winningNumber, winningNumbers)) {
+            if (isDuplicated(winningNumber, winningNumbers)) {
                 continue;
             }
             return winningNumber;
+        }
+    }
+
+    public int getBonusNumber(int[] winningNumbers) {
+        while (true) {
+            int bonusNumber = random.nextInt(RANDOM_BOUND) + 1;
+            if (isValidBonusNumber(winningNumbers, bonusNumber)) {
+                return bonusNumber;
+            }
         }
     }
 
@@ -66,5 +75,15 @@ public class LottoGenerator {
             }
         }
         return false;
+    }
+
+    private boolean isValidBonusNumber(int[] winningNumbers, int bonusNumber) {
+        boolean check = true;
+        for (int winningNumber : winningNumbers) {
+            if (winningNumber == bonusNumber) {
+                return false;
+            }
+        }
+        return check;
     }
 }
