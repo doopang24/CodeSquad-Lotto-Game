@@ -2,8 +2,8 @@ package Lotto;
 
 public class ResultPrinter {
 
-    public void printWinningNumbers(int[] winningNumbers, int bonusNumber) {
-        System.out.print("로또 당첨 숫자: ");
+    public void printWinningNumbers(int[] winningNumbers, int bonusNumber, int roundOfGame) {
+        System.out.print(roundOfGame + "회차 당첨번호: ");
         String lotto = joinArray(winningNumbers);
         System.out.print(lotto);
         System.out.println(" + 보너스 숫자 " + bonusNumber);
@@ -15,15 +15,19 @@ public class ResultPrinter {
         System.out.println(lotto);
     }
 
-    public void printLotteryResult(int match, boolean hasBonus) {
-        WinningLevel level = WinningLevel.findWinningLevel(match, hasBonus);
-        if (match == 5 && hasBonus) {
-            System.out.print("결과: " + match + "개 일치, 보너스 번호 일치. ");
-            System.out.println(level.getDescription());
+    public void printLotteryResult(int countMatches, int bonusNumber, boolean hasBonus, String matchingNumbers, WinningLevel level) {
+        if (countMatches == 5 && hasBonus) {
+            System.out.println("결과: " + countMatches + "개 일치! 보너스 번호 일치! "
+                    + "(" + matchingNumbers + " + " + bonusNumber + ")");
+            System.out.println(level.getDescription() + " (+" + level.getFormattedPrize() + ")");
+            return;
+        } else if (countMatches == 0) {
+            System.out.println("당첨번호 " + countMatches + "개 일치");
+            System.out.println(level.getDescription() + " (+" + level.getFormattedPrize() + ")");
             return;
         }
-        System.out.print("결과: " + match + "개 일치. ");
-        System.out.println(level.getDescription());
+        System.out.println("당첨번호 " + countMatches + "개 일치! " + "(" + matchingNumbers + ")");
+        System.out.println(level.getDescription() + " (+" + level.getFormattedPrize() + ")");
     }
 
     private String joinArray(int[] lotto) {
