@@ -13,4 +13,15 @@ public class LottoWinnerChecker {
         }
         return count;
     }
+
+    public boolean checkHasBonus(int[] playerLottoTicket, int bonus) {
+        boolean check = false;
+        for(int lottoNumber : playerLottoTicket) {
+            if(lottoNumber == bonus) {
+                check = true;
+                break;
+            }
+        }
+        return check;
+    }
 }
