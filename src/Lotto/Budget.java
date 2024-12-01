@@ -16,13 +16,11 @@ public class Budget {
         return String.format("%,d원", getBudget());
     }
 
-    public int deductBudget(int ticketPrice) {
+    public void deductBudget(int ticketPrice) {
         budget = budget - ticketPrice;
-        return budget;
     }
 
-    public int addPrize(int prize) {
+    public void addPrize(int prize) {
         budget = budget + prize;
-        return budget;
     }
 }
