@@ -2,14 +2,14 @@ package Lotto;
 
 public class Budget {
 
-    private final int BUDGET;
+    private int budget;
 
     public Budget(int budget) {
-        this.BUDGET = budget;
+        this.budget = budget;
     }
 
     public int getBudget() {
-        return BUDGET;
+        return budget;
     }
 
     public String getFormattedBudget() {
@@ -17,10 +17,12 @@ public class Budget {
     }
 
     public int deductBudget(int ticketPrice) {
-        return BUDGET - ticketPrice;
+        budget = budget - ticketPrice;
+        return budget;
     }
 
     public int addPrize(int prize) {
-        return BUDGET + prize;
+        budget = budget + prize;
+        return budget;
     }
 }
