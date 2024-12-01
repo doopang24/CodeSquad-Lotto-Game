@@ -15,4 +15,12 @@ public class Budget {
     public String getFormattedBudget() {
         return String.format("%,d원", getBudget());
     }
+
+    public int deductBudget(int ticketPrice) {
+        return BUDGET - ticketPrice;
+    }
+
+    public int addPrize(int prize) {
+        return BUDGET + prize;
+    }
 }
