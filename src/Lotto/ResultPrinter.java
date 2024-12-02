@@ -2,20 +2,26 @@ package Lotto;
 
 public class ResultPrinter {
 
-    public void printWinningNumbers(int[] winningNumbers, int bonusNumber, int roundOfGame) {
+    public void printerController(int[] winningNumbers, int[] playerLottoTicket, int bonusNumber, int roundOfGames, int countMatches, boolean hasBonus, String matchingNumbers, WinningLevel level) {
+        printWinningNumbers(winningNumbers, bonusNumber, roundOfGames);
+        printPlayerLotto(playerLottoTicket);
+        printLotteryResult(countMatches, bonusNumber, hasBonus, matchingNumbers, level);
+    }
+
+    private void printWinningNumbers(int[] winningNumbers, int bonusNumber, int roundOfGame) {
         System.out.print(roundOfGame + "회차 당첨번호: ");
         String lotto = joinArray(winningNumbers);
         System.out.print(lotto);
         System.out.println(" + 보너스 숫자 " + bonusNumber);
     }
 
-    public void printPlayerLotto(int[] playerLottoTicket) {
+    private void printPlayerLotto(int[] playerLottoTicket) {
         System.out.print("플레이어의 숫자: ");
         String lotto = joinArray(playerLottoTicket);
         System.out.println(lotto);
     }
 
-    public void printLotteryResult(int countMatches, int bonusNumber, boolean hasBonus, String matchingNumbers, WinningLevel level) {
+    private void printLotteryResult(int countMatches, int bonusNumber, boolean hasBonus, String matchingNumbers, WinningLevel level) {
         if (countMatches == 5 && hasBonus) {
             System.out.println("결과: " + countMatches + "개 일치! 보너스 번호 일치! "
                     + "(" + matchingNumbers + " + " + bonusNumber + ")");
