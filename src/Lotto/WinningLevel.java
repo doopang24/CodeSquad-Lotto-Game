@@ -25,8 +25,8 @@ public enum WinningLevel {
     }
 
     public static WinningLevel findWinningLevel(int matchingNumber, boolean hasBonus) {
-        for(WinningLevel level : values()) {
-            if(level.matchingNumber == matchingNumber && (!level.bonus || hasBonus)) {
+        for (WinningLevel level : values()) {
+            if (level.matchingNumber == matchingNumber && (!level.bonus || hasBonus)) {
                 return level;
             }
         }
